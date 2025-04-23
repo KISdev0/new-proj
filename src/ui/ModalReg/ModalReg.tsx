@@ -1,17 +1,20 @@
-import styles from './Modal.module.css'
+import styles from './ModalReg.module.css'
 
 
-export const Modal = () => {
+
+
+export const ModalReg = () => {
     return (
         <div>
 
         <div className={styles.glass}>
         </div>
         <form className={styles.form}>
-            <p>Login Form</p>
+            <p>Registration Form</p>
             <input className={styles.input} placeholder="Username"/>
             <input className={styles.input} placeholder="Password"/>
-            <button className={styles.button}>LOGIN</button>
+            <input className={styles.input} placeholder="Password again"/>
+            <button className={styles.button}>SIGN UP</button>
         </form>
         </div>
 
