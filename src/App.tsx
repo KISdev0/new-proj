@@ -3,7 +3,7 @@ import { ModalReg } from "./ui/ModalReg/ModalReg";
 
 let modal_type = 'login';
 
-modal_type = 'reg'
+modal_type = 'login'
 
 
 
@@ -11,7 +11,6 @@ modal_type = 'reg'
 function App() {
 
   
-
   return (
     <div className="App">
       

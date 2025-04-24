@@ -6,15 +6,31 @@ import styles from './ModalReg.module.css'
 
 export const ModalReg = () => {
 
-    const [user, setUser] = useState('')
-    const [pass, setPass] = useState('')
-    const [passA, setPassA] = useState('')
+    const[credentials, setCredentials] = useState({
+        Username: '',
+        Password: '',
+        PasswordAgain: ''
+    })
 
-    const onSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+     
+
+    const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log('Username:', user)
-        console.log('Password:', pass)
-        console.log('Password again:', passA)
+        console.log("Credentials:", credentials)
+
+        setCredentials({
+            Username: '',
+            Password: '',
+            PasswordAgain: ''
+        })
+            }
+
+    const handleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
+        const{name, value} = e.target
+        setCredentials(prev => ({
+            ...prev,
+            [name]: value
+        }))
     }
 
     return (
@@ -22,28 +38,31 @@ export const ModalReg = () => {
 
         <div className={styles.glass}>
         </div>
-        <form onSubmit={onSubmit} className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
             <p>Registration Form</p>
             <input
+            name='Username'
              className={styles.input} 
              placeholder="Username"
-             onChange={e => setUser(e.target.value)}
-             value={user}
+             onChange={handleChange}
+             value={credentials.Username}
              />
              
 
             <input 
+            name='Password'
             className={styles.input} 
             placeholder="Password"
-            onChange={e => setPass(e.target.value)}
-            value={pass}
+            onChange={handleChange}
+            value={credentials.Password}
             />
 
             <input 
+            name='PasswordAgain'
             className={styles.input} 
             placeholder="Password again"
-            onChange={e => setPassA(e.target.value)}
-            value={passA}
+            onChange={handleChange}
+            value={credentials.PasswordAgain}
             />
 
             <button 

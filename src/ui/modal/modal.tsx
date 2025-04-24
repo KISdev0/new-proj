@@ -3,15 +3,31 @@ import styles from './Modal.module.css'
 
 
 export const Modal = () => {
+    const[credentials, setCredentials] = useState({
+        Username: '',
+        Password: ''
+    })
 
-    const[user, setUser] = useState('')    
-    const[pass, setPass] = useState('')    
+     
 
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log("Username:", user)
-        console.log("Password:", pass)
+        console.log("Credentials:", credentials)
+
+        setCredentials({
+            Username: '',
+            Password: ''
+        })
+            }
+
+    const handleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
+        const{name, value} = e.target
+        setCredentials(prev => ({
+            ...prev,
+            [name]: value
+        }))
     }
+
     return (
         <div>
 
@@ -20,17 +36,19 @@ export const Modal = () => {
         <form onSubmit={handleSubmit} className={styles.form}>
             <p>Login Form</p>
             <input 
+            name='Username'
             className={styles.input} 
             placeholder="Username"
-            onChange={e => setUser(e.target.value)} 
-            value={user}
+            onChange={handleChange} 
+            value={credentials.Username}
             />
 
             <input 
+            name='Password'
             className={styles.input} 
             placeholder="Password"
-            onChange={e => setPass(e.target.value)} 
-            value={pass}
+            onChange={handleChange} 
+            value={credentials.Password}
             />
             <button 
             type='submit'
