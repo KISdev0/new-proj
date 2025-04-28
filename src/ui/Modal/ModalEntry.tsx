@@ -1,11 +1,10 @@
 import { useState } from "react";
-import styles from "./ModalReg.module.css";
+import styles from "./ModalEntry.module.css";
 
-export const ModalReg = () => {
+export const ModalEntry = () => {
   const [credentials, setCredentials] = useState({
-    Username: "",
-    Password: "",
-    PasswordAgain: "",
+    username: "",
+    password: "",
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -13,9 +12,8 @@ export const ModalReg = () => {
     console.log("Credentials:", credentials);
 
     setCredentials({
-      Username: "",
-      Password: "",
-      PasswordAgain: "",
+      username: "",
+      password: "",
     });
   };
 
@@ -30,32 +28,25 @@ export const ModalReg = () => {
   return (
     <div className={styles.glass}>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <p>Registration Form</p>
+        <p>Login Form</p>
         <input
-          name="Username"
+          name="username"
           className={styles.input}
           placeholder="Username"
           onChange={handleChange}
-          value={credentials.Username}
+          value={credentials.username}
         />
 
         <input
-          name="Password"
+          name="password"
           className={styles.input}
           placeholder="Password"
           onChange={handleChange}
-          value={credentials.Password}
+          value={credentials.password}
         />
-
-        <input
-          name="PasswordAgain"
-          className={styles.input}
-          placeholder="Password again"
-          onChange={handleChange}
-          value={credentials.PasswordAgain}
-        />
-
-        <button className={styles.button}>SIGN UP</button>
+        <button type="submit" className={styles.button}>
+          SIGN IN
+        </button>
       </form>
     </div>
   );

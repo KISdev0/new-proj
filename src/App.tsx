@@ -1,25 +1,20 @@
-import { Modal } from "./ui/Modal/Modal";
+import { ModalEntry } from "./ui/Modal/ModalEntry";
 import { ModalReg } from "./ui/ModalReg/ModalReg";
+import "./global.css";
+import { useState } from "react";
+import ButtonToggleModal from "./ui/ButtonToggleModal/ButtonToggleModal";
 
-let modal_type = 'login';
-
-modal_type = 'login'
-
-
-
+type typeModalType = "login" | "registration";
 
 function App() {
+  const [modalType, setModalType] = useState<typeModalType>("login");
 
-  
   return (
     <div className="App">
-      
-      {modal_type === 'login'? <Modal />: <ModalReg />}
-      
+      <ButtonToggleModal modalType={modalType} setModalType={setModalType} />
+      {modalType === "login" ? <ModalEntry /> : <ModalReg />}
     </div>
   );
 }
 
 export default App;
-
-
