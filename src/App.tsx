@@ -1,4 +1,4 @@
-import { ModalEntry } from "./ui/Modal/ModalEntry";
+import { ModalEntry } from "./ui/ModalEntry/ModalEntry";
 import { ModalReg } from "./ui/ModalReg/ModalReg";
 import "./global.css";
 import { useState } from "react";
