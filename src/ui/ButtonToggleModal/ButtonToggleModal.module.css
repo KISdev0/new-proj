@@ -1,0 +1,15 @@
+.ButtonToggleModal {
+  position: absolute;
+  width: 250px;
+  height: 50px;
+  margin-left: calc(50vw - 125px);
+  font-size: 15px;
+  background-color: blue;
+  color: white;
+  z-index: 10;
+}
+
+.ButtonToggleModal:hover {
+  background-color: aquamarine;
+  cursor: pointer;
+}

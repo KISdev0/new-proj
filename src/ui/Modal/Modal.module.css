@@ -1,0 +1,46 @@
+.form {
+  left: calc(50% - 200px);
+  top: calc(50% - 200px);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 400px;
+  font-size: 30px;
+  box-sizing: content-box;
+  z-index: 10;
+  background: white;
+  border: none;
+}
+
+.input {
+  margin-top: 15px;
+  width: 100%;
+  height: 30px;
+  border: none;
+  border-bottom: 2px solid grey;
+  outline: none;
+}
+
+.button {
+  margin-top: 20px;
+  width: 50%;
+  height: 40px;
+  background-color: blue;
+  color: white;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: aquamarine;
+}
+
+.glass {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
