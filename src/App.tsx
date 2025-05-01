@@ -1,5 +1,5 @@
 import { ModalEntry } from "./ui/ModalEntry/ModalEntry";
-import { ModalReg } from "./ui/ModalReg/ModalReg";
+import { ModalRegistration } from "./ui/ModalRegistration/ModalRegistration";
 import "./global.css";
 import { useState } from "react";
 import ButtonToggleModal from "./ui/ButtonToggleModal/ButtonToggleModal";
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <ButtonToggleModal modalType={modalType} setModalType={setModalType} />
-      {modalType === "login" ? <ModalEntry /> : <ModalReg />}
+      {modalType === "login" ? <ModalEntry /> : <ModalRegistration />}
     </div>
   );
 }

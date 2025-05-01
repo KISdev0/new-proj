@@ -1,58 +1,22 @@
-import { useState } from "react";
-import styles from "./ModalEntry.module.css";
+import { DEFAULT_CREDENTIALS_ENTRY } from "../../Consts";
+
+import { Modal } from "../Modal/Modal";
 
 export const ModalEntry = () => {
-  const DEFAULT_CREDENTIALS = {
-    username: "",
-    password: "",
-  };
-
-  const [credentials, setCredentials] = useState(DEFAULT_CREDENTIALS);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Credentials:", credentials);
-
-    setCredentials(DEFAULT_CREDENTIALS);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setCredentials((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleSubmit = (credentials: typeof DEFAULT_CREDENTIALS_ENTRY) => {
+    console.log("Данные пользователя:", credentials);
   };
 
   return (
-    <div className={styles.glass}>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <p>Login Form</p>
-        <label htmlFor="username">
-          <input
-            id="username"
-            name="username"
-            className={styles.input}
-            placeholder="Username"
-            onChange={handleChange}
-            value={credentials.username}
-          />
-        </label>
-
-        <label htmlFor="password">
-          <input
-            id="password"
-            name="password"
-            className={styles.input}
-            placeholder="Password"
-            onChange={handleChange}
-            value={credentials.password}
-          />
-        </label>
-        <button type="submit" className={styles.button}>
-          SIGN IN
-        </button>
-      </form>
-    </div>
+    <Modal
+      title="Форма входа"
+      fields={[
+        { name: "username", placeholder: "Имя пользователя" },
+        { name: "password", placeholder: "Пароль", type: "password" },
+      ]}
+      buttonText="Войти"
+      onSubmit={handleSubmit}
+      initialCredentials={DEFAULT_CREDENTIALS_ENTRY}
+    />
   );
 };
