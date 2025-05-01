@@ -2,19 +2,18 @@ import { useState } from "react";
 import styles from "./ModalEntry.module.css";
 
 export const ModalEntry = () => {
-  const [credentials, setCredentials] = useState({
+  const DEFAULT_CREDENTIALS = {
     username: "",
     password: "",
-  });
+  };
+
+  const [credentials, setCredentials] = useState(DEFAULT_CREDENTIALS);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Credentials:", credentials);
 
-    setCredentials({
-      username: "",
-      password: "",
-    });
+    setCredentials(DEFAULT_CREDENTIALS);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,21 +28,27 @@ export const ModalEntry = () => {
     <div className={styles.glass}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <p>Login Form</p>
-        <input
-          name="username"
-          className={styles.input}
-          placeholder="Username"
-          onChange={handleChange}
-          value={credentials.username}
-        />
+        <label htmlFor="username">
+          <input
+            id="username"
+            name="username"
+            className={styles.input}
+            placeholder="Username"
+            onChange={handleChange}
+            value={credentials.username}
+          />
+        </label>
 
-        <input
-          name="password"
-          className={styles.input}
-          placeholder="Password"
-          onChange={handleChange}
-          value={credentials.password}
-        />
+        <label htmlFor="password">
+          <input
+            id="password"
+            name="password"
+            className={styles.input}
+            placeholder="Password"
+            onChange={handleChange}
+            value={credentials.password}
+          />
+        </label>
         <button type="submit" className={styles.button}>
           SIGN IN
         </button>

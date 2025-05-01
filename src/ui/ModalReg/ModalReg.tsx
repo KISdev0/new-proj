@@ -2,21 +2,19 @@ import { useState } from "react";
 import styles from "./ModalReg.module.css";
 
 export const ModalReg = () => {
-  const [credentials, setCredentials] = useState({
+  const DEFAULT_CREDENTIALS = {
     Username: "",
     Password: "",
-    PasswordAgain: "",
-  });
+    PasswordRepeat: "",
+  };
+
+  const [credentials, setCredentials] = useState(DEFAULT_CREDENTIALS);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Credentials:", credentials);
 
-    setCredentials({
-      Username: "",
-      Password: "",
-      PasswordAgain: "",
-    });
+    setCredentials(DEFAULT_CREDENTIALS);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,29 +29,38 @@ export const ModalReg = () => {
     <div className={styles.glass}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <p>Registration Form</p>
-        <input
-          name="Username"
-          className={styles.input}
-          placeholder="Username"
-          onChange={handleChange}
-          value={credentials.Username}
-        />
+        <label htmlFor="Username">
+          <input
+            id="Username"
+            name="Username"
+            className={styles.input}
+            placeholder="Username"
+            onChange={handleChange}
+            value={credentials.Username}
+          />
+        </label>
 
-        <input
-          name="Password"
-          className={styles.input}
-          placeholder="Password"
-          onChange={handleChange}
-          value={credentials.Password}
-        />
+        <label htmlFor="Password">
+          <input
+            id="Password"
+            name="Password"
+            className={styles.input}
+            placeholder="Password"
+            onChange={handleChange}
+            value={credentials.Password}
+          />
+        </label>
 
-        <input
-          name="PasswordAgain"
-          className={styles.input}
-          placeholder="Password again"
-          onChange={handleChange}
-          value={credentials.PasswordAgain}
-        />
+        <label htmlFor="PasswordRepeat">
+          <input
+            id="PasswordRepeat"
+            name="PasswordRepeat"
+            className={styles.input}
+            placeholder="Repeat Password"
+            onChange={handleChange}
+            value={credentials.PasswordRepeat}
+          />
+        </label>
 
         <button className={styles.button}>SIGN UP</button>
       </form>
